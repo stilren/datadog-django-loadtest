@@ -1,1 +1,35 @@
 # datadog-django-loadtest
+
+The realworld application with datadog integration is from: https://github.com/DataDog/trace-examples/tree/master/python/django/django-realworld
+
+I did change datadog site to use .eu and I added a line in the django-readworld dockerfile to run migrations.
+
+To run through the Realworld API tests against a Django backend with Datadog 
+Tracing enabled:
+
+``` 
+export DD_API_KEY=...
+docker-compose up --build
+```
+
+# Run load test with datadog tracing.
+1. Install k6 (or use whatever load testing helper you want)
+2. Start the application
+    ```
+    docker-compose up --build
+    ```
+
+3. Then go to k6loadtest folder and run (monitor CPU usage also)
+    ```
+    cd k6loadtest
+    k6 run --vus 10 --duration 30s script.js  
+    ```
+
+# Run load test without datadog tracing.
+1. Go to django-realworld-example-app and disable datadog by removing "ddtrace-run" from dockerfile
+    ```
+    CMD python manage.py runserver 0.0.0.0:3000
+    ```
+2. Run the load test again (monitor cpu usage)
+
+There is a clear performance cost to running the datadog agent, both in terms of transaction times and cpu usage.
