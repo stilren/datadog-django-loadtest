@@ -12,6 +12,7 @@ pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 export DD_API_KEY=...
+cd ..
 docker-compose up --build
 ```
 
