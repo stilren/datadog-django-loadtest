@@ -8,7 +8,7 @@ I did change datadog site to use .eu and I added a line in the django-readworld 
 
 ```
 cd django-readlworld-example-app
-pip install -r requirment.txt
+pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 export DD_API_KEY=...
@@ -27,6 +27,16 @@ docker-compose up --build
     cd k6loadtest
     k6 run --vus 10 --duration 30s script.js  
     ```
+
+## Run load test (using locust) with datadog tracing.
+1.
+    ```
+    cd locust
+    pip install -r requirements.txt
+    ```
+2. run locust from command line
+3. Observe load test from the UI when browsing to http://0.0.0.0:8089
+
 
 ## Run load test without datadog tracing.
 1. Go to django-realworld-example-app and disable datadog by removing "ddtrace-run" from dockerfile
