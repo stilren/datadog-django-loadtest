@@ -29,12 +29,12 @@ docker-compose up --build
     ```
 
 ## Run load test (using locust) with datadog tracing.
-1.
+1. Make sure you have python 3.6 or above before pip installing locust (https://locust.io/) below:
     ```
     cd locust
     pip install -r requirements.txt
     ```
-2. run locust from command line
+2. run "locust" command from command line
 3. Observe load test from the UI when browsing to http://0.0.0.0:8089
 
 
